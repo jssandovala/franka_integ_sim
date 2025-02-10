@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+
+    <arg name="init_x" default="0.0"/>
+    <arg name="init_y" default="0.0"/>
+    <arg name="init_z" default="0.0"/>
+    <arg name="init_roll" default="0.0"/>
+    <arg name="init_pitch" default="0.0"/>
+    <arg name="init_yaw" default="0.0"/>
+
+    <param name="robot_description2" textfile="$(find franka_integ_sim)/description/urdf/target.urdf" />
+
+    <node name="spawn_cube" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description2 -model target_model
+          -x $(arg init_x) -y $(arg init_y) -z $(arg init_z)
+          -R $(arg init_roll) -P $(arg init_pitch) -Y $(arg init_yaw)" 
+          output="screen" />
+
+</launch> 
